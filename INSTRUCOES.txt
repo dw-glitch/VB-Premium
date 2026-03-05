@@ -1,0 +1,64 @@
+🎬 INSTRUÇÕES PARA ADICIONAR SUAS FOTOS
+=====================================
+
+1. PASTA ASSETS
+   - O diretório "assets" já foi criado no mesmo local que index.html
+   - Coloque todas as 12 fotos nesta pasta
+
+2. NOMEAÇÃO DAS FOTOS
+   - Nomeie as fotos assim:
+   
+   foto1.jpg    → Primeiro encontro na praia à noite
+   foto2.jpg    → Segundo encontro
+   foto3.jpg    → Momentos juntos
+   foto4.jpg    → Seu sorriso (close, rosto)
+   foto5.jpg    → Conhecendo você melhor
+   foto6.jpg    → Diversão juntos
+   foto7.jpg    → Momentos especiais/abraços
+   foto8.jpg    → Nosso amor (casal abraçado ou beijando)
+   foto9.jpg    → Nós juntos
+   foto10.jpg   → Aventura (viagem ou passeio)
+   foto11.jpg   → Futuro (vocês planejando algo)
+   foto12.jpg   → Na Igreja (com frase sobre Deus planejar)
+
+3. FORMATO ACEITO
+   - JPG, PNG ou JPEG
+   - Recomendado: 800x600px ou maior para boa qualidade
+   - Pode ser em qualquer tamanho, o site se adapta automaticamente
+
+4. ESTRUTURA DE PASTAS
+   FASE P/
+   ├── index.html
+   ├── INSTRUCOES.txt
+   └── assets/
+       ├── foto1.jpg
+       ├── foto2.jpg
+       ├── foto3.jpg
+       ├── foto4.jpg
+       ├── foto5.jpg
+       ├── foto6.jpg
+       ├── foto7.jpg
+       ├── foto8.jpg
+       ├── foto9.jpg
+       ├── foto10.jpg
+       ├── foto11.jpg
+       └── foto12.jpg
+
+5. PERSONALIZAR AS FRASES
+   - Abra o arquivo index.html com um editor de texto (Notepad, VS Code, etc)
+   - Procure por <div class="slide-text"> (tem 12 delas)
+   - Edite as frases conforme desejar mantendo a estrutura HTML
+
+6. TESTAR
+   - Abra o arquivo index.html em seu navegador
+   - As fotos aparecem do lado esquerdo, as frases do lado direito
+   - Navegue usando: botões, setas do teclado ou deslizable no celular
+   - A mensagem final aparece ao chegar na última foto
+
+7. DICAS
+   - Use fotos da melhor qualidade possível
+   - Tente que tenham uma iluminação consistente
+   - A última foto (foto12.jpg) deve ser na Igreja para combinar com a frase final
+   - Não precisa ser em ordem cronológica perfeita, o importante é contar a história
+
+Aproveite! Ela vai ficar emocionada! 💕

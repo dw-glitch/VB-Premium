@@ -1,0 +1,14 @@
+node_modules/
+.env.local
+.env.*.local
+dist/
+build/
+.babelrc
+.history/
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
+*~
+.vite/
