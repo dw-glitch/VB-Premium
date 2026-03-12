@@ -1,18 +1,30 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Heart, MoreVertical, Pencil, Trash2 } from 'lucide-react'
 import { useApp } from '../context/AppContext'
 
 export function MemoryCard({ memory, onPress, onLongPress, onOptionsClick, onEditMemory, onDeleteMemory }) {
-  const { toggleFavorite } = useApp()
-  const [isFavorite, setIsFavorite] = React.useState(memory.is_favorite || false)
-  const [showActions, setShowActions] = React.useState(false)
+  const { toggleFavorite, memories } = useApp()
+  const [showActions, setShowActions] = useState(false)
+  const [isFavorite, setIsFavorite] = useState(memory.is_favorite || false)
+
+  // Sincronizar estado local com banco de dados quando houver mudanças
+  useEffect(() => {
+    const currentMemory = memories.find(m => m.id === memory.id)
+    if (currentMemory && currentMemory.is_favorite !== isFavorite) {
+      console.log('Sincronizando favorito:', memory.id, currentMemory.is_favorite)
+      setIsFavorite(currentMemory.is_favorite)
+    }
+  }, [memories, memory.id])
 
   const handleFavoriteClick = async (e) => {
     e.stopPropagation()
+    const newStatus = !isFavorite
+    console.log('handleFavoriteClick chamado:', { id: memory.id, currentStatus: isFavorite, newStatus })
     try {
       await toggleFavorite(memory.id, isFavorite)
-      setIsFavorite(!isFavorite)
+      setIsFavorite(newStatus)
+      console.log('Favorito atualizado com sucesso!')
     } catch (error) {
       console.error('Erro ao favoritação:', error)
     }
