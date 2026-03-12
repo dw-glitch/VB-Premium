@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import logo from '../../assets/logo.png'
 
 export function SplashScreen({ onStart }) {
   return (
@@ -16,29 +17,16 @@ export function SplashScreen({ onStart }) {
         transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
       >
         <motion.div
-          className="splash-icon"
+          className="splash-logo-container"
           initial={{ scale: 0, rotate: -180 }}
           animate={{ scale: 1, rotate: 0 }}
           transition={{ delay: 0.4, duration: 0.8, type: 'spring' }}
         >
-          <svg viewBox="0 0 100 100" className="heart-icon">
-            <motion.path
-              d="M50 88 C20 60 5 40 5 25 C5 12 15 5 25 5 C33 5 40 10 50 18 C60 10 67 5 75 5 C85 5 95 12 95 25 C95 40 80 60 50 88Z"
-              fill="none"
-              stroke="var(--rosa-premium)"
-              strokeWidth="2"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ delay: 0.6, duration: 1 }}
-            />
-            <motion.path
-              d="M50 88 C20 60 5 40 5 25 C5 12 15 5 25 5 C33 5 40 10 50 18 C60 10 67 5 75 5 C85 5 95 12 95 25 C95 40 80 60 50 88Z"
-              fill="var(--rosa-interactive)"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.15 }}
-              transition={{ delay: 1.2, duration: 0.8 }}
-            />
-          </svg>
+          <img 
+            src={logo} 
+            alt="Nossas Iniciais" 
+            className="splash-logo"
+          />
         </motion.div>
 
         <motion.h1
