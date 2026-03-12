@@ -113,11 +113,12 @@ export function AppProvider({ children }) {
         'postgres_changes',
         { event: '*', schema: 'public', table: 'memories' },
         (payload) => {
-          console.log('📡 Mudança detectada:', payload.eventType)
+          console.log('📡 Mudança detectada:', payload.eventType, payload)
 
           if (payload.eventType === 'INSERT') {
             setMemories((prev) => [...prev, payload.new])
           } else if (payload.eventType === 'UPDATE') {
+            console.log('📡 Atualizando memória:', payload.new.id, payload.new)
             setMemories((prev) =>
               prev.map((m) => (m.id === payload.new.id ? payload.new : m))
             )
@@ -126,7 +127,9 @@ export function AppProvider({ children }) {
           }
         }
       )
-      .subscribe()
+      .subscribe((status) => {
+        console.log('📡 Status da conexão Realtime:', status)
+      })
 
     return () => {
       channel.unsubscribe()
@@ -213,6 +216,7 @@ export function AppProvider({ children }) {
 
   // Favoritação
   const toggleFavorite = async (id, currentStatus) => {
+    console.log('toggleFavorite chamado:', { id, currentStatus, newValue: !currentStatus })
     try {
       const { data, error } = await supabase
         .from('memories')
@@ -228,6 +232,13 @@ export function AppProvider({ children }) {
         throw new Error(error.message || 'Erro ao favoritar')
       }
 
+      console.log('Favorito atualizado com sucesso:', data)
+      
+      // Atualizar estado local imediatamente para melhor UX
+      if (data && data[0]) {
+        setMemories(prev => prev.map(m => m.id === id ? data[0] : m))
+      }
+      
       return data[0]
     } catch (err) {
       console.error('Erro ao favoritação:', err)
